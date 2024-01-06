@@ -20,11 +20,14 @@ node {
 	    input message: 'Approval dibutuhkan, Deploy app?', ok: 'Proceed'
     }
     stage('Deploy') {
-	    archiveArtifacts 'target/java-app-submission.jar'
-	    docker.build("java-app:latest");
-	    sh "ssh-keyscan -H 52.221.236.171 >> ~/.ssh/known_hosts"
-	    sh "/usr/bin/scp -i /home/capernaum_gabriella/final-dicoding-submission.pem /home/capernaum_gabriella/first-submission/simple-java-maven-app/target/java-app-submission.jar  ubuntu@52.221.236.171:/home/ubuntu/java-app-submission.jar"
-	    sh 'docker run --rm java-app'
-	    sleep 60
+            sh 'java -jar target/java-app-submission.jar'
     }
+//    stage('Deploy') {
+//	    archiveArtifacts 'target/java-app-submission.jar'
+//	    docker.build("java-app:latest");
+//	    sh "ssh-keyscan -H 52.221.236.171 >> ~/.ssh/known_hosts"
+//	    sh "/usr/bin/scp -i /home/capernaum_gabriella/final-dicoding-submission.pem /home/capernaum_gabriella/first-submission/simple-java-maven-app/target/java-app-submission.jar  ubuntu@52.221.236.171:/home/ubuntu/java-app-submission.jar"
+//	    sh 'docker run --rm java-app'
+//	    sleep 60
+//    }
 }
