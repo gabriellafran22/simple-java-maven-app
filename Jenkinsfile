@@ -23,13 +23,13 @@ node {
 //                sh './jenkins/scripts/deliver.sh'
 //    }    
     stage('Deploy') {
-//	    archiveArtifacts artifacts: 'target/java-app-submission.jar'
-	    archiveArtifacts 'target/java-app-submission.jar'
+//	    archiveArtifacts artifacts: 'target/my-app-1.0-SNAPSHOT.jar'
+	    archiveArtifacts 'target/my-app-1.0-SNAPSHOT.jar'
 	    docker.build("java-app:latest");
 //	    sh "ssh-keyscan -H 52.221.236.171 >> ~/.ssh/known_hosts"
 //	    sh "/usr/bin/scp -i /home/capernaum_gabriella/final-dicoding-submission.pem /home/capernaum_gabriella/first-submission/simple-java-maven-app/target/java-app-submission.jar  ubuntu@52.221.236.171:/home/ubuntu/java-app-submission.jar"
 //	    sh 'docker run --rm java-app'
 	    input message: 'Sudah selesai menggunakan Java App? (Klik "Proceed" untuk mengakhiri)'
-            sleep 60
+//            sleep 60
     }
 }
