@@ -20,7 +20,9 @@ node {
 	    input message: 'Approval dibutuhkan, Deploy app?', ok: 'Proceed'
     }
     stage('Deploy') {
-            sh 'java -jar target/java-app-submission.jar'
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+            }
     }
 //    stage('Deploy') {
 //	    archiveArtifacts 'target/java-app-submission.jar'
